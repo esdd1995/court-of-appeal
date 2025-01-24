@@ -8,6 +8,7 @@ services:
       - WEB_BASE_HREF=${WEB_BASE_HREF}
       - IpFilterRules=${IpFilterRules}
       - RealIpFrom=${RealIpFrom}
+      - NODE_OPTIONS=--max-old-space-size=4096  # Set Node.js memory limit to 4GB
     ports:
       - "${WEB_HTTP_PORT}:8080"
     depends_on:
@@ -22,6 +23,7 @@ services:
       - NODE_ENV=development
       - NPM_CONFIG_LOGLEVEL=notice
       - NPM_RUN=serve
+      - NODE_OPTIONS=--max-old-space-size=4096  # Set Node.js memory limit to 4GB
     ports:
       - "${WEB_HTTP_PORT}:8080"
       - 5858:5858
@@ -64,6 +66,7 @@ services:
       - SITEMINDER_LOGOFF_URL=${SITEMINDER_LOGOFF_URL}
       - OIDC_RP_CLIENT_SECRET=${OIDC_RP_CLIENT_SECRET}
       - OIDC_RP_KC_IDP_HINT=${OIDC_RP_KC_IDP_HINT}
+      - OIDC_RP_PROVIDER_ENDPOINT=${OIDC_RP_PROVIDER_ENDPOINT}
       - EFILING_HUB_API_BASE_URL=${EFILING_HUB_API_BASE_URL}
       - EFILING_HUB_KEYCLOAK_CLIENT_ID=${EFILING_HUB_KEYCLOAK_CLIENT_ID}
       - EFILING_HUB_KEYCLOAK_SECRET=${EFILING_HUB_KEYCLOAK_SECRET}
@@ -77,6 +80,7 @@ services:
       - CSOWS_PASSWORD=${CSOWS_PASSWORD}
       - CSOWS_ENDPOINT=${CSOWS_ENDPOINT}
       - CSOWS_EXT_ENDPOINT=${CSOWS_EXT_ENDPOINT}
+      - STATS_AUTHORIZED_LIST=${STATS_AUTHORIZED_LIST}
     volumes:
       - ../api/api:/opt/app-root/src/api
     ports:

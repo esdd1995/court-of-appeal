@@ -167,6 +167,10 @@ build-pdf() {
 }
 
 configureEnvironment () {
+  if [ -f .env ]; then
+    echo -e "\nLoading environment variables from .env ...\n"
+    source .env
+  fi
   for arg in $@; do
     case "$arg" in
       *=*)

@@ -5,6 +5,7 @@
 /prototypes
 *.local.*
 
+.env
 # General
 .DS_Store
 .AppleDouble
